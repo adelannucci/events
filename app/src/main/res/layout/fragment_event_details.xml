@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_event_details"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/image_event" />
+
+        <ImageView
+            android:id="@+id/people_detail_event_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_peoples"
+            app:layout_constraintEnd_toStartOf="@id/people_detail_event"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_event_details"
+            android:contentDescription="@string/peoples" />
+
+        <TextView
+            android:id="@+id/people_detail_event"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/people_detail_event_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/people_detail_event_icon"
+            app:layout_constraintTop_toTopOf="@id/people_detail_event_icon"
+            tools:text="1000" />
+
+        <ImageView
+            android:id="@+id/price_detail_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_price_money"
+            app:layout_constraintEnd_toStartOf="@id/price_detail_event"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/people_detail_event_icon"
+            android:contentDescription="@string/price" />
+
+        <TextView
+            android:id="@+id/price_detail_event"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/price_detail_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/price_detail_icon"
+            app:layout_constraintTop_toTopOf="@id/price_detail_icon"
+            tools:text="29.90" />
+
+        <TextView
+            android:id="@+id/title_event_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_detail_icon"
+            tools:text="@tools:sample/lorem[5]" />
+
+        <TextView
+            android:id="@+id/description_event_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/description"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/title_event_details"
+            app:layout_constraintStart_toStartOf="@+id/title_event_details"
+            app:layout_constraintTop_toBottomOf="@+id/title_event_details"
+            tools:text="@tools:sample/lorem[35]" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_check_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/check_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_event_details" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

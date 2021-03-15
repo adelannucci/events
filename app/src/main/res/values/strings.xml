@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Events</string>
+    <string name="image_event">Event image</string>
+    <string name="check_in">Check-in</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="peoples">Peoples</string>
+</resources>
