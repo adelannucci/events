@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.adelannucci.events.R
-import com.adelannucci.events.model.Event
-import kotlinx.android.synthetic.main.event_item.view.*
+import com.adelannucci.events.databinding.EventItemBinding
+import com.adelannucci.events.datasource.remote.Event
 
 class ListEventAdapter(
     private val context: Context,
@@ -18,15 +17,13 @@ class ListEventAdapter(
 
     private val events = events.toMutableList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(
-            LayoutInflater.from(context)
-                .inflate(
-                    R.layout.event_item,
-                    parent,
-                    false
-                )
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding: EventItemBinding =
+            EventItemBinding.inflate(layoutInflater, parent, false)
+
+        return ViewHolder(binding)
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(events[position])
@@ -40,12 +37,9 @@ class ListEventAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(private val binding: EventItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        private val title = itemView.title_event
-        private val description = itemView.description_text
-        private val peoples = itemView.people_event
-        private val image = itemView.image_event
         private lateinit var event: Event
 
         init {
@@ -59,22 +53,22 @@ class ListEventAdapter(
         fun bind(event: Event) {
             this.event = event
             setupImage()
-            fillFields()
+            setupView()
         }
 
         private fun setupImage() {
             if (this.event.image.isNullOrBlank()) {
-                image.visibility = View.GONE
+                binding.imageEvent.visibility = View.GONE
             } else {
-                image.visibility = View.VISIBLE
+                binding.imageEvent.visibility = View.VISIBLE
             }
         }
 
-        private fun fillFields() {
-            title.text = this.event.title
-            description.text = this.event.description
-            peoples.text = "${event.people.size}"
-            image.load(this.event.image)
+        private fun setupView() {
+            binding.titleEvent.text = this.event.title
+            binding.descriptionText.text = this.event.description
+            binding.peopleEvent.text = "${event.people.size}"
+            binding.imageEvent.load(this.event.image)
         }
 
     }

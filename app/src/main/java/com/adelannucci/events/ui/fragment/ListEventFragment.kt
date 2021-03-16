@@ -1,20 +1,23 @@
 package com.adelannucci.events.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.adelannucci.events.R
-import com.adelannucci.events.model.Event
+import com.adelannucci.events.databinding.FragmentListEventBinding
+import com.adelannucci.events.datasource.remote.Event
 import com.adelannucci.events.ui.adapter.ListEventAdapter
 import com.adelannucci.events.ui.extensions.snackBar
 import com.adelannucci.events.ui.viewmodel.ListEventViewModel
-import kotlinx.android.synthetic.main.fragment_list_event.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListEventFragment : Fragment(R.layout.fragment_list_event) {
 
+    private lateinit var binding: FragmentListEventBinding
     private val viewModel: ListEventViewModel by viewModel()
     private val navController: NavController by lazy {
         findNavController()
@@ -31,16 +34,25 @@ class ListEventFragment : Fragment(R.layout.fragment_list_event) {
         fetchEvents()
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentListEventBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     private fun setupSwipe() {
-        swipe_refresh_events.setOnRefreshListener {
+        binding.swipeRefreshEvents.setOnRefreshListener {
             fetchEvents {
-                swipe_refresh_events.isRefreshing = false
+                binding.swipeRefreshEvents.isRefreshing = false
             }
         }
     }
 
     private fun setupRecyclerView() {
-        recyclerview_events.adapter = adapter
+        binding.recyclerviewEvents.adapter = adapter
     }
 
     private fun setupAdapter(): ListEventAdapter {
@@ -55,8 +67,8 @@ class ListEventFragment : Fragment(R.layout.fragment_list_event) {
         viewModel.findAll().observe(viewLifecycleOwner) {
             it?.let { request ->
                 request.data?.let(this::update)
-                request.error?.let { error ->
-                    view?.snackBar(error)
+                request.error?.let { errorMessageId ->
+                    view?.snackBar(resources.getString(errorMessageId))
                 }
             }
             handle()

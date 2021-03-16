@@ -1,4 +1,4 @@
-package com.adelannucci.events.model
+package com.adelannucci.events.datasource.remote
 
 class Event(
     val people: List<String> = listOf(),

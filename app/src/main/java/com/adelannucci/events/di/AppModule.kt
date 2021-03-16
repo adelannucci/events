@@ -1,8 +1,10 @@
 package com.adelannucci.events.di
 
+import com.adelannucci.events.datasource.EventService
+import com.adelannucci.events.repository.CheckInRepository
 import com.adelannucci.events.repository.EventRepository
-import com.adelannucci.events.source.EventService
 import com.adelannucci.events.ui.viewmodel.DetailsEventViewModel
+import com.adelannucci.events.ui.viewmodel.DialogCheckInViewModel
 import com.adelannucci.events.ui.viewmodel.ListEventViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -34,10 +36,12 @@ val retrofitModule = module {
 val viewModelModule = module {
     viewModel<ListEventViewModel> { ListEventViewModel(get()) }
     viewModel<DetailsEventViewModel> { DetailsEventViewModel(get()) }
+    viewModel<DialogCheckInViewModel> { DialogCheckInViewModel(get()) }
 }
 
 val repositoryModule = module {
     single<EventRepository> { EventRepository(get()) }
+    single<CheckInRepository> { CheckInRepository(get()) }
 }
 
 val appModules = listOf(

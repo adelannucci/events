@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listEventFragment"
         android:name="com.adelannucci.events.ui.fragment.ListEventFragment"
-        android:label="Events"
+        android:label="@string/label_events"
         tools:layout="@layout/fragment_list_event">
         <action
             android:id="@+id/action_listEventFragment_to_detailsEventFragment"
@@ -17,10 +17,23 @@
     <fragment
         android:id="@+id/detailsEventFragment"
         android:name="com.adelannucci.events.ui.fragment.DetailsEventFragment"
-        android:label="Details"
+        android:label="@string/label_details"
         tools:layout="@layout/fragment_event_details">
         <argument
             android:name="eventId"
             app:argType="long" />
+
+        <action
+            android:id="@+id/action_detailsEventFragment_to_dialogCheckInFragment"
+            app:destination="@id/dialogCheckInFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/dialogCheckInFragment"
+        android:name="com.adelannucci.events.ui.fragment.DialogCheckInFragment"
+        android:label=""
+        tools:layout="@layout/fragment_dialog_check_in">
+        <argument
+            android:name="eventId"
+            app:argType="long" />
+    </dialog>
 </navigation>

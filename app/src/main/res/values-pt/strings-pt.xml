@@ -6,4 +6,17 @@
     <string name="description">Descrição</string>
     <string name="price">Preço</string>
     <string name="peoples">Inscritos</string>
+    <string name="hint_email">E-mail </string>
+    <string name="hint_name">Nome</string>
+    <string name="email_field_required">E-mail obrigatório </string>
+    <string name="name_field_required">Nome obrigatório </string>
+    <string name="generic_check_in_error">Ops! não foi possível fazer o check-in</string>
+    <string name="check_in_succesfull">Check-ing realizado!</string>
+    <string name="label_details">Detalhes do Evento</string>
+    <string name="label_events">Eventos</string>
+    <string name = "failed_connect_server">Falha ao conectar com o servidor</string>
+    <string name = "request_failed">Falha na requisição</string>
+    <string name = "unknown_error">Erro desconhecido</string>
+    <string name = "failed_fetch_event">Falha ao buscar evento</string>
+    <string name = "failed_fetch_events"> Falha ao buscar eventos</string>
 </resources>
