@@ -4,16 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:padding="8dp"
+    android:layout_margin="@dimen/half_margin"
+    android:padding="@dimen/half_padding"
     tools:context=".ui.fragment.DialogCheckInFragment">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/check_in_animation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_image_height"
+        android:layout_margin="@dimen/half_margin"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="spaced_repetition.json"
+        app:lottie_loop="true"
+        app:lottie_speed="1" />
+
+    <TextView
+        android:id="@+id/text_description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/default_margin"
+        android:padding="@dimen/half_margin"
+        android:textSize="@dimen/description_font_size"
+        android:text="@string/dialog_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_in_animation" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/default_margin"
         android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +57,12 @@
         android:id="@+id/text_input_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
+        android:layout_margin="@dimen/default_margin"
         android:layout_height="wrap_content"
         android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:layout_constraintEnd_toEndOf="@+id/text_input_email"
-        app:layout_constraintStart_toStartOf="@+id/text_input_email"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_description">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -46,40 +73,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_login"
+        android:id="@+id/button_confirmation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_input_name"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="@dimen/default_margin"
         android:text="@string/check_in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/text_input_name"
-        app:layout_constraintStart_toStartOf="@+id/text_input_name"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_email" />
-
-    <TextView
-        android:id="@+id/feedback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Feedback message"
-        tools:visibility="gone" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_ok"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@android:string/ok"
-        app:layout_constraintEnd_toEndOf="@+id/feedback"
-        app:layout_constraintStart_toStartOf="@+id/feedback"
-        app:layout_constraintTop_toBottomOf="@+id/feedback"
-        android:visibility="gone"
-        tools:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_input_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

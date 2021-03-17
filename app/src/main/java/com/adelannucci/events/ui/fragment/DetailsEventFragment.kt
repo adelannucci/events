@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import coil.size.Scale
+import coil.transform.CircleCropTransformation
 import com.adelannucci.events.R
 import com.adelannucci.events.databinding.FragmentEventDetailsBinding
 import com.adelannucci.events.datasource.remote.Event
@@ -89,7 +91,11 @@ class DetailsEventFragment : Fragment(R.layout.fragment_event_details) {
     }
 
     private fun fillFields(event: Event) {
-        binding.imageEventDetails.load(event.image)
+        binding.imageEventDetails.load(event.image) {
+            error(R.drawable.image_404)
+            transformations(CircleCropTransformation())
+            scale(Scale.FILL)
+        }
         binding.peopleDetailEvent.text = event.people.size.toString()
         binding.priceDetailEvent.text = event.price.toString()
         binding.titleEventDetails.text = event.title

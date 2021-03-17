@@ -1,26 +1,27 @@
 package com.adelannucci.events.ui.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.adelannucci.events.databinding.EventItemBinding
+import coil.size.Scale
+import coil.transform.CircleCropTransformation
+import com.adelannucci.events.R
+import com.adelannucci.events.databinding.ItemEventBinding
 import com.adelannucci.events.datasource.remote.Event
 
 class ListEventAdapter(
-    private val context: Context,
-    events: List<Event> = listOf(),
-    val handleClick: (id: Long) -> Unit,
+        events: List<Event> = listOf(),
+        val handleClick: (id: Long) -> Unit,
 ) : RecyclerView.Adapter<ListEventAdapter.ViewHolder>() {
 
     private val events = events.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding: EventItemBinding =
-            EventItemBinding.inflate(layoutInflater, parent, false)
+        val binding: ItemEventBinding =
+                ItemEventBinding.inflate(layoutInflater, parent, false)
 
         return ViewHolder(binding)
     }
@@ -37,8 +38,8 @@ class ListEventAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: EventItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemEventBinding) :
+            RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var event: Event
 
@@ -68,7 +69,11 @@ class ListEventAdapter(
             binding.titleEvent.text = this.event.title
             binding.descriptionText.text = this.event.description
             binding.peopleEvent.text = "${event.people.size}"
-            binding.imageEvent.load(this.event.image)
+            binding.imageEvent.load(this.event.image) {
+                error(R.drawable.image_404)
+                transformations(CircleCropTransformation())
+                scale(Scale.FILL)
+            }
         }
 
     }

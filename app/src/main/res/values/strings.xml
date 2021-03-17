@@ -5,17 +5,22 @@
     <string name="description">Description</string>
     <string name="price">Price</string>
     <string name="peoples">Peoples</string>
+    <string name="dialog_description">Check-in is a short while away! Just fill in the fields below.</string>
     <string name="hint_email">e-mail</string>
     <string name="hint_name">Name</string>
+    <string name="email_field_invalid">Invalid e-mail</string>
     <string name="email_field_required">Email required</string>
     <string name="name_field_required">Name required</string>
     <string name="generic_check_in_error">Oops! it was not possible to check-in</string>
     <string name="check_in_succesfull">Successful check-ing</string>
     <string name="label_details">Event Details</string>
     <string name="label_events">Events</string>
-    <string name = "failed_connect_server">Failed to connect to the server </string>
-    <string name = "request_failed">Request failed </string>
-    <string name = "unknown_error">Unknown error </string>
-    <string name = "failed_fetch_event">Failed to fetch event </string>
-    <string name = "failed_fetch_events">Failed to fetch events </string>
+    <string name="failed_connect_server">Failed to connect to the server </string>
+    <string name="request_failed">Request failed </string>
+    <string name="unknown_error">Unknown error </string>
+    <string name="failed_fetch_event">Failed to fetch event </string>
+    <string name="failed_fetch_events">Failed to fetch events </string>
+    <string name="empty_events">Oops, no events here!</string>
+    <string name="show_location">Show in GMaps</string>
+
 </resources>

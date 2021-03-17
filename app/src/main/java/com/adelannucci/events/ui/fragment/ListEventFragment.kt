@@ -57,7 +57,6 @@ class ListEventFragment : Fragment(R.layout.fragment_list_event) {
 
     private fun setupAdapter(): ListEventAdapter {
         return ListEventAdapter(
-            context = requireContext(),
             handleClick = { id ->
                 goToDetails(id)
             })
@@ -68,6 +67,7 @@ class ListEventFragment : Fragment(R.layout.fragment_list_event) {
             it?.let { request ->
                 request.data?.let(this::update)
                 request.error?.let { errorMessageId ->
+                    setupVisibilityEmptyEvents(false)
                     view?.snackBar(resources.getString(errorMessageId))
                 }
             }
@@ -77,6 +77,20 @@ class ListEventFragment : Fragment(R.layout.fragment_list_event) {
 
     private fun update(events: List<Event>) {
         adapter.update(events)
+        setupVisibilityEmptyEvents(events.isNotEmpty())
+    }
+
+    private fun setupVisibilityEmptyEvents(hasEvents: Boolean) {
+        if (hasEvents) {
+            binding.recyclerviewEvents.visibility = View.VISIBLE
+            binding.emptyListMessage.visibility = View.GONE
+            binding.emptyList.visibility = View.GONE
+        } else {
+            binding.recyclerviewEvents.visibility = View.GONE
+            binding.emptyListMessage.visibility = View.VISIBLE
+            binding.emptyList.visibility = View.VISIBLE
+
+        }
     }
 
     private fun goToDetails(id: Long) {

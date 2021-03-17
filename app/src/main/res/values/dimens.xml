@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="half_margin">8dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="half_padding">8dp</dimen>
+    <dimen name="item_image_height">100dp</dimen>
+    <dimen name="card_max_height">300dp</dimen>
+    <dimen name="empty_state_animation_height">300dp</dimen>
+    <dimen name="icon_dimens">32dp</dimen>
+
+    <dimen name="title_font_size">24sp</dimen>
+    <dimen name="description_font_size">18sp</dimen>
+</resources>

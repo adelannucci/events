@@ -1,122 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/image_event_details"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:contentDescription="@string/image_event"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/people_detail_event_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="16dp"
-            android:contentDescription="@string/peoples"
-            android:src="@drawable/ic_peoples"
-            app:layout_constraintEnd_toStartOf="@id/people_detail_event"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_event_details" />
+            <ImageView
+                android:id="@+id/image_event_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/image_event"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/people_detail_event"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@id/people_detail_event_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/people_detail_event_icon"
-            app:layout_constraintTop_toTopOf="@id/people_detail_event_icon"
-            tools:text="1000" />
+            <ImageView
+                android:id="@+id/people_detail_event_icon"
+                android:layout_width="@dimen/icon_dimens"
+                android:layout_height="@dimen/icon_dimens"
+                android:layout_margin="@dimen/default_margin"
+                android:contentDescription="@string/peoples"
+                android:src="@drawable/ic_peoples"
+                app:layout_constraintEnd_toStartOf="@id/people_detail_event"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_event_details" />
 
-        <ImageView
-            android:id="@+id/price_detail_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="16dp"
-            android:contentDescription="@string/price"
-            android:src="@drawable/ic_price_money"
-            app:layout_constraintEnd_toStartOf="@id/price_detail_event"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/people_detail_event_icon" />
+            <TextView
+                android:id="@+id/people_detail_event"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_margin"
+                app:layout_constraintBottom_toBottomOf="@id/people_detail_event_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/people_detail_event_icon"
+                app:layout_constraintTop_toTopOf="@id/people_detail_event_icon"
+                tools:text="1000" />
 
-        <TextView
-            android:id="@+id/price_detail_event"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@id/price_detail_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/price_detail_icon"
-            app:layout_constraintTop_toTopOf="@id/price_detail_icon"
-            tools:text="29.90" />
+            <ImageView
+                android:id="@+id/price_detail_icon"
+                android:layout_width="@dimen/icon_dimens"
+                android:layout_height="@dimen/icon_dimens"
+                android:layout_margin="@dimen/default_margin"
+                android:contentDescription="@string/price"
+                android:src="@drawable/ic_price_money"
+                app:layout_constraintEnd_toStartOf="@id/price_detail_event"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/people_detail_event_icon" />
 
-        <TextView
-            android:id="@+id/title_event_details"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:textSize="32sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price_detail_icon"
-            tools:text="@tools:sample/lorem[5]" />
+            <TextView
+                android:id="@+id/price_detail_event"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/default_margin"
+                app:layout_constraintBottom_toBottomOf="@id/price_detail_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/price_detail_icon"
+                app:layout_constraintTop_toTopOf="@id/price_detail_icon"
+                tools:text="29.90" />
 
-        <TextView
-            android:id="@+id/description_event_details"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/description"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="@+id/title_event_details"
-            app:layout_constraintStart_toStartOf="@+id/title_event_details"
-            app:layout_constraintTop_toBottomOf="@+id/title_event_details"
-            tools:text="@tools:sample/lorem[35]" />
+            <TextView
+                android:id="@+id/title_event_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:textSize="@dimen/title_font_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/price_detail_icon"
+                tools:text="@tools:sample/lorem[5]" />
 
+            <TextView
+                android:id="@+id/description_event_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/description"
+                android:textSize="@dimen/description_font_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/title_event_details"
+                app:layout_constraintStart_toStartOf="@+id/title_event_details"
+                app:layout_constraintTop_toBottomOf="@+id/title_event_details"
+                tools:text="@tools:sample/lorem[35]" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_maps"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:text="Mostrar no Maps"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_check_in"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description_event_details"
-            tools:visibility="visible" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/default_margin"
+        android:contentDescription="@string/show_location"
+        android:visibility="gone"
+        app:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_check_in"
+        app:srcCompat="@android:drawable/ic_dialog_map"
+        tools:visibility="visible" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_check_in"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:text="@string/check_in"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button_maps"
-            app:layout_constraintTop_toBottomOf="@+id/description_event_details"
-            tools:visibility="visible" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/button_check_in"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/default_margin"
+        android:text="@string/check_in"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:backgroundTint="@color/design_default_color_primary"
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>
