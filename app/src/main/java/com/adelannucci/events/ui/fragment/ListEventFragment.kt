@@ -89,7 +89,6 @@ class ListEventFragment : Fragment(R.layout.fragment_list_event) {
             binding.recyclerviewEvents.visibility = View.GONE
             binding.emptyListMessage.visibility = View.VISIBLE
             binding.emptyList.visibility = View.VISIBLE
-
         }
     }
 

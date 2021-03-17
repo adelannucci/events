@@ -15,7 +15,7 @@
             android:id="@+id/empty_list"
             android:layout_width="match_parent"
             android:layout_height="@dimen/empty_state_animation_height"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,8 @@
             app:lottie_autoPlay="true"
             app:lottie_fileName="space_panda_and_turtle.json"
             app:lottie_loop="true"
-            app:lottie_speed="1" />
+            app:lottie_speed="1"
+            tools:visibility="visible"/>
 
         <TextView
             android:id="@+id/empty_list_message"
@@ -33,7 +34,8 @@
             android:padding="@dimen/half_padding"
             android:text="@string/empty_events"
             android:textSize="@dimen/title_font_size"
-            android:visibility="visible"
+            android:visibility="gone"
+            tools:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/empty_list" />

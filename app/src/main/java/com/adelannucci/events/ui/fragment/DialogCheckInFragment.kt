@@ -2,7 +2,6 @@ package com.adelannucci.events.ui.fragment
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,9 +24,9 @@ class DialogCheckInFragment : DialogFragment() {
     private val viewModel: DialogCheckInViewModel by viewModel()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentDialogCheckInBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,14 +40,13 @@ class DialogCheckInFragment : DialogFragment() {
     override fun onStart() {
         super.onStart()
         dialog?.window?.setLayout(
-                WindowManager.LayoutParams.MATCH_PARENT,
-                WindowManager.LayoutParams.WRAP_CONTENT
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
         )
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        Log.i("AQUI", "Dismiss")
         dismiss()
     }
 
@@ -64,35 +62,38 @@ class DialogCheckInFragment : DialogFragment() {
     }
 
     private fun clearFields() {
+        binding.textInputEmail.visibility = View.VISIBLE
+        binding.textInputName.visibility = View.VISIBLE
+        binding.buttonConfirmation.visibility = View.VISIBLE
         binding.textInputEmail.error = null
         binding.textInputName.error = null
     }
 
     private fun validateFields(
-            email: String,
-            name: String
+        email: String,
+        name: String
     ): Boolean {
-        var valid = true
+        var validName = true
+        var validEmail = true
 
         if (email.isBlank()) {
             binding.textInputEmail.error = resources.getString(R.string.email_field_required)
-            valid = false
+            validEmail = false
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.textInputEmail.error = resources.getString(R.string.email_field_invalid)
-            valid = false
+            validEmail = false
         }
 
         if (name.isBlank()) {
             binding.textInputName.error = resources.getString(R.string.name_field_required)
-            valid = false
+            validName = false
         }
-        return valid
+        return validName && validEmail
     }
 
     private fun setupFeedback() {
         binding.textInputEmail.visibility = View.GONE
         binding.textInputName.visibility = View.GONE
-        binding.textDescription.visibility = View.VISIBLE
         binding.buttonConfirmation.text = resources.getText(android.R.string.ok)
         binding.buttonConfirmation.setOnClickListener {
             dismiss()
@@ -101,17 +102,12 @@ class DialogCheckInFragment : DialogFragment() {
 
     private fun send(checkIn: CheckIn) {
         viewModel.checkIn(checkIn).observe(viewLifecycleOwner, { isSuccessful ->
-            setupFeedback()
             if (isSuccessful) {
-                binding.checkInAnimation.setAnimation("mouse_success.json")
-                binding.checkInAnimation.progress = 0F
                 binding.textDescription.text = getString(R.string.check_in_succesfull)
             } else {
-                binding.checkInAnimation.setAnimation("mouse_error.json")
-                binding.checkInAnimation.progress = 0F
                 binding.textDescription.text = resources.getString(R.string.generic_check_in_error)
             }
-            binding.checkInAnimation.playAnimation()
+            setupFeedback()
         })
     }
 }
