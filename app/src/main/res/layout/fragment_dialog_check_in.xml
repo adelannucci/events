@@ -44,8 +44,8 @@
         android:id="@+id/text_input_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
-        android:layout_margin="@dimen/default_margin"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
         android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_name"
-            android:inputType="text"
+            android:inputType="textPersonName|textCapWords"
             android:textSize="@dimen/description_font_size" />
     </com.google.android.material.textfield.TextInputLayout>
 

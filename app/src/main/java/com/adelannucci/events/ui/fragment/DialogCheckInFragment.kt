@@ -2,6 +2,7 @@ package com.adelannucci.events.ui.fragment
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,7 @@ class DialogCheckInFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        settingTextInputName()
         settingButtonConfirmation()
     }
 
@@ -48,6 +50,17 @@ class DialogCheckInFragment : DialogFragment() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         dismiss()
+    }
+
+    private fun settingTextInputName() {
+        val letterFilter =
+            InputFilter { source, _, _, _, _, _ ->
+                var filtered = ""
+                val regex = Regex("[^\\p{Alpha} ]")
+                filtered = regex.replace(source, "")
+                filtered
+            }
+        binding.textInputName.editText?.filters = arrayOf(letterFilter)
     }
 
     private fun settingButtonConfirmation() {
